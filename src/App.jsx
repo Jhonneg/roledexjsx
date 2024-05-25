@@ -5,8 +5,11 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: "world",
+      monsters: [],
     };
+  }
+  componentDidMount() {
+    
   }
 
   render() {
