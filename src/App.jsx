@@ -14,14 +14,9 @@ export default class App extends Component {
         "https://jsonplaceholder.typicode.com/users"
       );
       const users = await response.json();
-      this.setState(
-        () => {
-          return { monsters: users };
-        },
-        () => {
-          console.log(this.state);
-        }
-      );
+      this.setState(() => {
+        return { monsters: users };
+      });
     } catch (error) {
       console.error("Error fetching users:", error);
     }
@@ -31,6 +26,20 @@ export default class App extends Component {
     return (
       <div>
         <h1>Monsters go here</h1>
+        <input
+          className="search-box"
+          type="search"
+          placeholder="Search monster"
+          onChange={(event) => {
+            const searchString = event.target.value.toLocaleLowerCase();
+            const filteredMonsters = this.state.monsters.filter((monster) => {
+              return monster.name.toLocaleLowerCase().includes(searchString);
+            });
+            this.setState(() => {
+              return { monsters: filteredMonsters };
+            });
+          }}
+        />
         <ul>
           {this.state.monsters.map((monster) => {
             return <li key={monster.id}>{monster.name}</li>;
