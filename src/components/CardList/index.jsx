@@ -2,6 +2,15 @@ import { Component } from "react";
 
 export default class CardList extends Component {
   render() {
-    return <div>Hello im the card list component</div>;
+    const { monsters } = this.props;
+    return (
+      <div>
+        <ul>
+          {monsters.map((monster) => {
+            return <li key={monster.id}>{monster.name}</li>;
+          })}
+        </ul>
+      </div>
+    );
   }
 }
