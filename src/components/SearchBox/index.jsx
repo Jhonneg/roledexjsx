@@ -1,5 +1,5 @@
 import { Component } from "react";
-import "./index.css";
+import "./search-box.styles.css";
 
 export default class SearchBox extends Component {
   render() {
