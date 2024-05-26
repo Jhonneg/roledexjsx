@@ -8,6 +8,8 @@ export default function App() {
   const [monsters, setMonsters] = useState([]);
 
   useEffect(() => {
+    // useEffect lifecycle hook to stop the component from rerendering in a loop 
+    // while fetching and crashing the app, equivalent to componentDidMount() 
     (async () => {
       try {
         const response = await fetch(
@@ -39,6 +41,8 @@ export default function App() {
     </div>
   );
 }
+
+// Class component version of the app
 
 // class App extends Component {
 //   constructor() {
