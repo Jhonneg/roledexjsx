@@ -43,7 +43,7 @@ export default class App extends Component {
     return (
       <div>
         <h1>Monsters go here</h1>
-        <SearchBox onSearchChange={onSearchChange} />
+        <SearchBox placeholder="Search monsters" onSearchChange={onSearchChange} />
         <CardList monsters={filteredMonsters} />
       </div>
     );
