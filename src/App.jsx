@@ -9,7 +9,7 @@ export default function App() {
 
   useEffect(() => {
     // useEffect lifecycle hook to stop the component from rerendering in a loop 
-    // while fetching and crashing the app, equivalent to componentDidMount() 
+    // while fetching, crashing the app, equivalent to componentDidMount() 
     (async () => {
       try {
         const response = await fetch(
