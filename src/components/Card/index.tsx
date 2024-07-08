@@ -6,15 +6,22 @@ type CardProps = {
 };
 
 export default function Card({ monster }: CardProps) {
-  const { id, name, email } = monster;
+  const id = monster.url.slice(30).replace(/\D/g, "");
+  const { name } = monster;
   return (
-    <div className="card-container" key={id}>
-      <img
-        alt={`monster ${name}`}
-        src={`https://robohash.org/${id}?set=set2&size=180x180`}
-      />
-      <h2>{name}</h2>
-      <p>{email}</p>
+    <div
+      className="card-container"
+      key={monster.url.slice(30).replace(/\D/g, "")}
+    >
+      <a href={`https://pokemondb.net/pokedex/${monster.name}`}>
+        <img
+          alt={`monster ${name}`}
+          src={`https://unpkg.com/pokeapi-sprites@2.0.2/sprites/pokemon/other/dream-world/${id}.svg`}
+          width="200"
+        />
+      </a>
+      <h2>{monster.name.charAt(0).toUpperCase() + monster.name.slice(1)}</h2>
+      <p>Pokedex nº {monster.url.slice(30).replace(/\D/g, "")}</p>
     </div>
   );
 }

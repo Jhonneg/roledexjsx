@@ -7,7 +7,8 @@ import { getData } from "./utils/data.utils";
 export type Monster = {
   id: string;
   name: string;
-  email: string;
+  results: string[];
+  url: string;
 };
 
 export default function App() {
@@ -16,9 +17,10 @@ export default function App() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const users = await getData<Monster[]>(
-        "https://jsonplaceholder.typicode.com/users"
+      const user = await getData<Monster[]>(
+        "https://pokeapi.co/api/v2/pokemon?offset=0&limit=151"
       );
+      const users = user.results;
       setMonsters(users);
     };
 
@@ -34,7 +36,7 @@ export default function App() {
   });
   return (
     <div>
-      <h1>Search Monsters</h1>
+      <h1>Search Pokemon</h1>
       <SearchBox
         placeholder="Search monsters"
         onSearchChange={onSearchChange}
