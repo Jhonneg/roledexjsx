@@ -9,8 +9,8 @@ type CardListProps = {
 export default function CardList({ monsters }: CardListProps) {
   return (
     <div className="card-list">
-      {monsters.map((monster) => {
-        return <Card monster={monster} />;
+      {monsters.map((monster, id) => {
+        return <Card key={id} monster={monster} />;
       })}
     </div>
   );

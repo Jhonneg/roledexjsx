@@ -1,4 +1,4 @@
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, ChangeEvent } from "react";
 import "./App.css";
 import CardList from "./components/CardList";
 import SearchBox from "./components/SearchBox";
@@ -15,17 +15,18 @@ export default function App() {
   const [searchField, setSearchField] = useState("");
   const [monsters, setMonsters] = useState<Monster[]>([]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const user = await getData<Monster[]>(
-        "https://pokeapi.co/api/v2/pokemon?offset=0&limit=151"
-      );
-      const users = user.results;
-      setMonsters(users);
-    };
+  // useEffect(() => {
+  (async function () {
+    "use server";
+    const user = await getData<Monster[]>(
+      "https://pokeapi.co/api/v2/pokemon?offset=0&limit=1025"
+    );
+    const users = user.results;
+    setMonsters(users);
+  })();
 
-    fetchUsers();
-  }, []);
+  //   fetchUsers();
+  // }, []);
 
   const onSearchChange = (event: ChangeEvent<HTMLInputElement>): void => {
     const searchFieldString = event.target.value.toLocaleLowerCase();
